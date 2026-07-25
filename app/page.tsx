@@ -4,6 +4,9 @@ import { useBooksBySubject } from "@/hooks/useBooks";
 import { BookCarouselSection } from "@/components/book/BookCarouselSection";
 import { Hero } from "@/components/home/Hero";
 import { GenrePills } from "@/components/home/GenrePills";
+import { RecommendedSection } from "@/components/home/RecommendedSection";
+import { SpeakWithAuthors } from "@/components/home/SpeakWithAuthors";
+import { FamousAuthors } from "@/components/home/FamousAuthors";
 
 export default function Home() {
   const newArrivals = useBooksBySubject("fiction", 8);
@@ -32,6 +35,8 @@ export default function Home() {
         />
       )}
 
+      <RecommendedSection />
+
       {crimeFiction.data && (
         <BookCarouselSection
           title="Crime Fiction"
@@ -39,6 +44,10 @@ export default function Home() {
           books={crimeFiction.data}
         />
       )}
+
+      <SpeakWithAuthors />
+      
+      <FamousAuthors />
 
       {business.data && (
         <BookCarouselSection
