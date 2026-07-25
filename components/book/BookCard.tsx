@@ -41,7 +41,7 @@ export function BookCard({ book, variant = "standard" }: BookCardProps) {
         )}
 
         <IconButton
-          icon={<Heart size={15} strokeWidth={1.5} className="text-[#303030]" />}
+          icon={<Heart size={15} strokeWidth={1.5} />}
           aria-label={`Add ${book.title} to wishlist`}
           className="absolute right-2 top-2 h-8 w-8 bg-[#f3f2ed]"
           onClick={(e) => {
