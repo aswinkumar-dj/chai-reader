@@ -1,34 +1,49 @@
 "use client";
 
 import { useBooksBySubject } from "@/hooks/useBooks";
+import { BookCarouselSection } from "@/components/book/BookCarouselSection";
 
 export default function Home() {
-  const { data, isLoading, isError, error } = useBooksBySubject("crime");
+  const crimeFiction = useBooksBySubject("crime");
+  const business = useBooksBySubject("business");
 
   return (
-    <main className="flex-1 p-8">
-      <h1 className="text-3xl font-semibold text-foreground mb-4">
-        Chai Reader — Data Layer Test
-      </h1>
-
-      {isLoading && <p className="text-muted-foreground">Loading books...</p>}
-
-      {isError && (
-        <p className="text-red-600">
-          Error: {error instanceof Error ? error.message : "Unknown error"}
+    <main className="flex-1 p-8 space-y-8">
+      <div>
+        <h1 className="text-2xl font-semibold text-foreground mb-1">
+          Chai Reader
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          BookCarouselSection component test
         </p>
+      </div>
+
+      {crimeFiction.isLoading && (
+        <p className="text-muted-foreground">Loading Crime Fiction...</p>
+      )}
+      {crimeFiction.isError && (
+        <p className="text-red-600">Failed to load Crime Fiction.</p>
+      )}
+      {crimeFiction.data && (
+        <BookCarouselSection
+          title="Crime Fiction"
+          subtitle="Trending books among readers"
+          books={crimeFiction.data}
+        />
       )}
 
-      {data && (
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {data.map((book) => (
-            <li key={book.id} className="border border-border rounded-[12px] p-3 bg-card">
-              <p className="font-medium text-sm">{book.title}</p>
-              <p className="text-xs text-muted-foreground">{book.author}</p>
-              <p className="text-xs mt-1">₹{book.price}</p>
-            </li>
-          ))}
-        </ul>
+      {business.isLoading && (
+        <p className="text-muted-foreground">Loading Business...</p>
+      )}
+      {business.isError && (
+        <p className="text-red-600">Failed to load Business.</p>
+      )}
+      {business.data && (
+        <BookCarouselSection
+          title="Business"
+          subtitle="Trending books among readers"
+          books={business.data}
+        />
       )}
     </main>
   );
