@@ -2,6 +2,7 @@
 // about our app's internal Book/Author types. Its only job is: build the
 // right URL, fetch it, return the raw JSON. All the "make this messy data
 // clean" logic lives in the repository layer, not here.
+//since this is a open library - no keys, common for all - i directly used here for simplicity for this assesment evaluation.
 
 const BASE_URL = "https://openlibrary.org";
 const COVERS_URL = "https://covers.openlibrary.org/b";
