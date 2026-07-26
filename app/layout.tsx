@@ -37,7 +37,7 @@ export default function RootLayout({
                 nav items than fit) -- doesn't move when content scrolls.
                 The component itself handles desktop vs. mobile-drawer
                 rendering internally. */}
-            <div className="h-full shrink-0 overflow-y-auto">
+            <div className="h-full shrink-0 overflow-y-auto hidden lg:block">
               <Sidebar />
             </div>
 
