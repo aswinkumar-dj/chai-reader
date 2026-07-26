@@ -42,7 +42,7 @@ export function DualBookCard({ books }: DualBookCardProps) {
   const [first, second] = books;
 
   return (
-    <div className="w-[351px] shrink-0 rounded-[12px] border border-[#eaeae6] bg-[#f3f2ed] p-[11px]">
+    <div className="w-[351px] shrink-0 rounded-[12px] border border-[#eaeae6] bg-[#f3f2ed] p-[11px] transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:shadow-[#797975]">
       <div className="flex gap-2">
         {[first, second].map((book) => (
           <div

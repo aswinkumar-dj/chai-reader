@@ -29,7 +29,7 @@ export function BookCard({ book, variant = "standard" }: BookCardProps) {
 
   return (
     <div
-      className={`${wrapper} shrink-0 rounded-[9px] border border-[#eaeae6] bg-[#f3f2ed] p-[11px]`}
+      className={`${wrapper} shrink-0 rounded-[9px] border border-[#eaeae6] bg-[#f3f2ed] p-[11px] transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:shadow-[#797975]`}
     >
       <div className={`relative ${cover} rounded-[9px] overflow-hidden bg-black/5`}>
         {book.coverUrl ? (

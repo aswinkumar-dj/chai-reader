@@ -71,9 +71,7 @@ export function Sidebar() {
       {/* Desktop sidebar -- unchanged from before */}
       <aside className="hidden w-[256px] shrink-0 rounded-[12px] border border-[#fff8d7] bg-[#fffbe7] p-3 lg:block">
         <div className="px-3 py-4">
-          <span className="text-xl font-semibold text-foreground">
-            Chai Reader
-          </span>
+        <Image src="/Simplification.png" alt="Chai Reader" width={195} height={39} priority />
         </div>
         <NavList />
       </aside>

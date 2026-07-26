@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Chai Reader — Discover, Read, Chat with Books",
+  title: "Chai Reader - Discover, Read, Chat with Books",
   description:
     "An AI-powered book commerce platform to discover and experience books.",
 };

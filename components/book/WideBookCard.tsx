@@ -6,7 +6,7 @@ import type { Book } from "@/lib/types";
 
 export function WideBookCard({ book }: { book: Book }) {
   return (
-    <div className="flex h-[170px] gap-4 rounded-[12px] border border-border bg-white p-4">
+    <div className="flex h-[170px] gap-4 rounded-[12px] border border-border bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:shadow-[#797975]">
       <div className="relative h-full w-[85px] shrink-0 overflow-hidden rounded-[8px] bg-black/5">
         {book.coverUrl ? (
           <Image
