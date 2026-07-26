@@ -47,7 +47,7 @@ export default function RootLayout({
               <div className="shrink-0">
                 <Header />
               </div>
-              <div className="flex-1 overflow-y-auto">
+              <div className="content-scroll flex-1 overflow-y-auto">
                 <PageTransition>
                   {children}
                 </PageTransition>
