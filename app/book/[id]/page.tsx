@@ -13,6 +13,7 @@ import { ReviewItem } from "@/components/book/ReviewItem";
 import { MOCK_REVIEWS } from "@/lib/mock-data";
 import { Breadcrumb } from "@/components/ui/BreadCrumb";
 import { useWishlistStore } from "@/lib/store/useWishlistStore";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 export default function BookDetailPage({
   params,
@@ -30,12 +31,21 @@ const toggleWishlist = useWishlistStore((state) => state.toggle);
   const bio = useExpandableText(author?.bio ?? "", 220);
 
   if (isLoading) {
-    return (
-      <main className="p-8">
-        <p className="text-muted-foreground">Loading book...</p>
-      </main>
-    );
-  }
+  return (
+    <main className="p-8">
+      <div className="flex flex-col gap-10 lg:flex-row">
+        <Skeleton className="h-[440px] w-full max-w-[280px] shrink-0" />
+        <div className="min-w-0 flex-1">
+          <Skeleton className="h-8 w-2/3" />
+          <Skeleton className="mt-3 h-4 w-1/3" />
+          <Skeleton className="mt-6 h-4 w-full" />
+          <Skeleton className="mt-2 h-4 w-full" />
+          <Skeleton className="mt-2 h-4 w-2/3" />
+        </div>
+      </div>
+    </main>
+  );
+}
 
   if (isError || !book) {
     return (

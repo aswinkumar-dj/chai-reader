@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Header } from "@/components/layout/Header";
+import { PageTransition } from "@/components/layout/PageTransition";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -28,11 +29,14 @@ export default function RootLayout({
         <Providers>
           {/* h-screen + overflow-hidden on the outer shell means nothing
               at this level scrolls -- only the designated scroll region
-              inside (the main content column) will. */}
-          <div className="flex h-screen w-full gap-[28px] overflow-hidden px-[28px] py-6">
+              inside (the main content column) will. Padding is tighter
+              on mobile (16px) and widens to 28px from lg upward. */}
+          <div className="flex h-screen w-full gap-[28px] overflow-hidden px-[16px] py-6 lg:px-[28px]">
             {/* Sidebar: fixed height matching the viewport, scrolls
                 internally only if its own content overflows (e.g. more
-                nav items than fit) -- doesn't move when content scrolls. */}
+                nav items than fit) -- doesn't move when content scrolls.
+                The component itself handles desktop vs. mobile-drawer
+                rendering internally. */}
             <div className="h-full shrink-0 overflow-y-auto">
               <Sidebar />
             </div>
@@ -44,8 +48,9 @@ export default function RootLayout({
                 <Header />
               </div>
               <div className="flex-1 overflow-y-auto">
-                {children}
-              
+                <PageTransition>
+                  {children}
+                </PageTransition>
               </div>
             </div>
           </div>

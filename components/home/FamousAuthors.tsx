@@ -4,12 +4,13 @@ import { AuthorAvatarCard } from "../author/AuthorAvatarCard";
 
 const authors = [
   { id: "OL23919A", name: "J.K. Rowling" },
+  { id: "OL21594A", name: "Agatha Christie" },
   { id: "OL1394865A", name: "Chetan Bhagat" },
   { id: "OL34328A", name: "Arundhati Roy" },
-  { id: "OL21594A", name: "Agatha Christie" },
   { id: "OL18319A", name: "Charles Dickens" },
-  { id: "OL23919A", name: "J.K. Rowling" },
-  { id: "OL1394865A", name: "Chetan Bhagat" },
+  { id: "OL26320A", name: "Leo Tolstoy" },
+  { id: "OL19981A", name: "George Orwell" },
+  { id: "OL25712A", name: "Mark Twain" },
 ];
 
 export function FamousAuthors() {

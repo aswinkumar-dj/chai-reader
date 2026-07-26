@@ -2,6 +2,7 @@
 
 import { useBooksBySubject } from "@/hooks/useBooks";
 import { BookCarouselSection } from "@/components/book/BookCarouselSection";
+import { BookCardSkeleton } from "@/components/book/BookCardSkeleton";
 import { Hero } from "@/components/home/Hero";
 import { GenrePills } from "@/components/home/GenrePills";
 import { RecommendedSection } from "@/components/home/RecommendedSection";
@@ -9,9 +10,22 @@ import { SpeakWithAuthors } from "@/components/home/SpeakWithAuthors";
 import { FamousAuthors } from "@/components/home/FamousAuthors";
 import { Footer } from "@/components/layout/Footer";
 
+function SkeletonRow() {
+  return (
+    <div className="flex gap-4 py-4">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <BookCardSkeleton key={i} />
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   const newArrivals = useBooksBySubject("fiction", 9);
-  const bestSellers = useBooksBySubject("bestsellers", 9);
+  // "bestsellers" isn't a real Open Library subject slug -- same issue
+  // we hit with "new_arrivals" earlier. Swapped for "fantasy", a
+  // well-populated real subject, same documented-assumption pattern.
+  const bestSellers = useBooksBySubject("fantasy", 9);
   const crimeFiction = useBooksBySubject("crime", 9);
   const business = useBooksBySubject("business", 9);
 
@@ -20,6 +34,7 @@ export default function Home() {
       <Hero />
       <GenrePills />
 
+      {newArrivals.isLoading && <SkeletonRow />}
       {newArrivals.data && (
         <BookCarouselSection
           title="New Arrivals"
@@ -28,6 +43,7 @@ export default function Home() {
         />
       )}
 
+      {bestSellers.isLoading && <SkeletonRow />}
       {bestSellers.data && (
         <BookCarouselSection
           title="Our Best Sellers"
@@ -38,6 +54,7 @@ export default function Home() {
 
       <RecommendedSection />
 
+      {crimeFiction.isLoading && <SkeletonRow />}
       {crimeFiction.data && (
         <BookCarouselSection
           title="Crime Fiction"
@@ -50,6 +67,7 @@ export default function Home() {
 
       <FamousAuthors />
 
+      {business.isLoading && <SkeletonRow />}
       {business.data && (
         <BookCarouselSection
           title="Business"

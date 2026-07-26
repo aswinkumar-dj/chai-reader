@@ -13,7 +13,7 @@ export function GenrePills() {
           <button
             key={genre}
             type="button"
-            className="flex h-[60.91px] w-[195.34px] shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-medium text-white shadow-sm transition-transform hover:scale-105"
+            className="flex h-12 w-[140px] shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] text-xs font-medium text-white shadow-sm transition-transform hover:scale-105 sm:h-[60.91px] sm:w-[195.34px] sm:text-sm"
           >
             {genre}
           </button>

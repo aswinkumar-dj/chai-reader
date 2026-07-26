@@ -11,6 +11,7 @@ import { WideBookCard } from "@/components/book/WideBookCard";
 import { FALLBACK_AUTHOR_GENRES } from "@/lib/mock-data";
 import { BackButton } from "@/components/ui/BackButton";
 import { Breadcrumb } from "@/components/ui/BreadCrumb";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 export default function AuthorPage({
   params,
@@ -27,7 +28,14 @@ export default function AuthorPage({
   if (isLoading) {
     return (
       <main className="p-8">
-        <p className="text-muted-foreground">Loading author...</p>
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
+          <Skeleton className="h-[220px] w-[220px] shrink-0 rounded-[16px]" />
+          <div className="min-w-0 flex-1">
+            <Skeleton className="h-8 w-1/2" />
+            <Skeleton className="mt-4 h-4 w-full" />
+            <Skeleton className="mt-2 h-4 w-2/3" />
+          </div>
+        </div>
       </main>
     );
   }

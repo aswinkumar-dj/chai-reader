@@ -7,14 +7,14 @@ import { ArrowRight } from "lucide-react";
 export function Hero() {
   return (
     <section className="relative mb-20 mt-8">
-      <div className="relative flex w-full flex-col items-start justify-center gap-8 overflow-visible rounded-[12px] border border-[#e9e9e9] bg-white px-8 py-10 md:h-[237px] md:px-12 lg:pr-[380px]">
+      <div className="relative flex w-full flex-col items-start justify-center gap-6 overflow-visible rounded-[12px] border border-[#e9e9e9] bg-white px-5 py-8 sm:px-8 sm:py-10 md:h-[237px] md:px-12 lg:pr-[380px]">
         {/* Text content -- capped width so it never runs under the
             illustration on the right. lg:pr-[380px] on the parent card
             reserves space for the illustration at the same breakpoint
             it becomes visible, so there's nothing to overlap. */}
         <div className="max-w-[576px]">
           <h1
-            className="bg-clip-text text-[28px] leading-tight tracking-[-0.28px] text-transparent"
+            className="bg-clip-text text-2xl leading-tight tracking-[-0.28px] text-transparent sm:text-[28px]"
             style={{
               backgroundImage:
                 "linear-gradient(89.99999647896357deg, rgb(64,41,64) 0%, rgb(47,42,57) 32.632%, rgb(35,15,92) 58.304%, rgb(47,42,57) 77.29%, rgb(36,23,36) 100%)",
