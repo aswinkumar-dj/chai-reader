@@ -1,16 +1,12 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useBooksBySubject } from "@/hooks/useBooks";
 import { BookCard } from "@/components/book/BookCard";
 import { BookCardSkeleton } from "@/components/book/BookCardSkeleton";
 import { Breadcrumb } from "@/components/ui/BreadCrumb";
 
-// Sidebar links use slugs like "self_help", "best_sellers" -- but Open
-// Library's real subject slugs don't always match 1:1 (we already hit
-// this with "bestsellers"/"new_arrivals" on the Browse page). This map
-// translates our nav labels to subjects we've confirmed actually return
-// results, same documented-assumption pattern used elsewhere.
 const SUBJECT_MAP: Record<string, { label: string; subject: string }> = {
   new_arrivals: { label: "New Arrivals", subject: "fiction" },
   best_sellers: { label: "Best Sellers", subject: "fantasy" },
@@ -21,7 +17,7 @@ const SUBJECT_MAP: Record<string, { label: string; subject: string }> = {
   classics: { label: "Classics", subject: "classic_literature" },
 };
 
-export default function SearchPage() {
+function SearchContent() {
   const params = useSearchParams();
   const key = params.get("subject") ?? "";
   const entry = SUBJECT_MAP[key] ?? { label: "Browse", subject: "fiction" };
