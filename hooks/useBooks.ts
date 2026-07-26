@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getBooksBySubject, getBookById } from "@/lib/repositories";
+import { getBooksBySubject, getBookById, getAuthorById } from "@/lib/repositories";
 
 // Query keys are how React Query identifies and caches each request.
 // ["books", "subject", "crime_fiction"] is a different cache entry than
@@ -17,5 +17,13 @@ export function useBook(id: string) {
     queryKey: ["books", "detail", id],
     queryFn: () => getBookById(id),
     enabled: !!id, // don't fire the request at all if id is empty/undefined
+  });
+}
+
+export function useAuthor(id: string | undefined) {
+  return useQuery({
+    queryKey: ["authors", "detail", id],
+    queryFn: () => getAuthorById(id as string),
+    enabled: !!id,
   });
 }

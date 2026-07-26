@@ -57,11 +57,11 @@ export function BookCard({ book, variant = "standard" }: BookCardProps) {
           {book.title}
         </p>
         <p className="truncate text-xs text-[#1142be]">{book.author}</p>
+
+        <Button className="mt-3">Read &amp; Chat</Button>
       </Link>
 
-      {/* "Read & Chat" -- confirmed from Figma, this is an AI reading-companion
-          product, not a plain buy button */}
-      <Button className="mt-3">Read &amp; Chat</Button>
+      
     </div>
   );
 }

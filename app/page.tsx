@@ -7,12 +7,13 @@ import { GenrePills } from "@/components/home/GenrePills";
 import { RecommendedSection } from "@/components/home/RecommendedSection";
 import { SpeakWithAuthors } from "@/components/home/SpeakWithAuthors";
 import { FamousAuthors } from "@/components/home/FamousAuthors";
+import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
-  const newArrivals = useBooksBySubject("fiction", 8);
-  const bestSellers = useBooksBySubject("bestsellers", 8);
-  const crimeFiction = useBooksBySubject("crime", 8);
-  const business = useBooksBySubject("business", 8);
+  const newArrivals = useBooksBySubject("fiction", 9);
+  const bestSellers = useBooksBySubject("bestsellers", 9);
+  const crimeFiction = useBooksBySubject("crime", 9);
+  const business = useBooksBySubject("business", 9);
 
   return (
     <main className="flex-1">
@@ -46,7 +47,7 @@ export default function Home() {
       )}
 
       <SpeakWithAuthors />
-      
+
       <FamousAuthors />
 
       {business.data && (
@@ -56,6 +57,8 @@ export default function Home() {
           books={business.data}
         />
       )}
+
+      <Footer />
     </main>
   );
 }
