@@ -65,3 +65,16 @@ function SearchContent() {
     </main>
   );
 }
+
+// useSearchParams() requires a Suspense boundary -- without it, Next.js
+// can't statically prerender this page at build time (it needs to know
+// the render can "pause" while the client-only search params resolve).
+// This didn't surface in `next dev`, only in a real production build --
+// exactly why testing `npm run build` locally before deploying matters.
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<main className="p-8" />}>
+      <SearchContent />
+    </Suspense>
+  );
+}
