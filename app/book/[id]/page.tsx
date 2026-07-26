@@ -12,6 +12,7 @@ import { ProductDetailRow } from "@/components/book/ProductDetailRow";
 import { ReviewItem } from "@/components/book/ReviewItem";
 import { MOCK_REVIEWS } from "@/lib/mock-data";
 import { Breadcrumb } from "@/components/ui/BreadCrumb";
+import { useWishlistStore } from "@/lib/store/useWishlistStore";
 
 export default function BookDetailPage({
   params,
@@ -22,6 +23,8 @@ export default function BookDetailPage({
   const { data: book, isLoading, isError } = useBook(id);
   const { data: author } = useAuthor(book?.authorId);
   const related = useBooksBySubject(book?.genres[0] ?? "fiction", 8);
+  const isWishlisted = useWishlistStore((state) => state.isWishlisted(book?.id ?? ""));
+const toggleWishlist = useWishlistStore((state) => state.toggle);
 
   const description = useExpandableText(book?.description ?? "", 320);
   const bio = useExpandableText(author?.bio ?? "", 220);
@@ -38,8 +41,7 @@ export default function BookDetailPage({
     return (
       <main className="p-8">
         <p className="text-red-600">
-          Couldn&apos;t load this book. It may not exist or the request
-          failed.
+          Couldn&apos;t load this book. It may not exist or the request failed.
         </p>
         <Link href="/" className="mt-4 inline-block text-sm text-[#1142be]">
           Back to Browse
@@ -51,8 +53,9 @@ export default function BookDetailPage({
   return (
     <main className="p-8">
       {/* Breadcrumb: Browse > Book Title*/}
-      <Breadcrumb items={[{ label: "Browse", href: "/" }, { label: book.title }]} />
-
+      <Breadcrumb
+        items={[{ label: "Browse", href: "/" }, { label: book.title }]}
+      />
 
       <div className="flex flex-col gap-10 lg:flex-row">
         {/* Cover + actions */}
@@ -97,12 +100,27 @@ export default function BookDetailPage({
               </h1>
               <p className="mt-1 text-sm text-muted-foreground">
                 Written by :{" "}
-                <span className="font-semibold text-muted-foreground">{book.author}</span>
+                <span className="font-semibold text-muted-foreground">
+                  {book.author}
+                </span>
               </p>
             </div>
             <IconButton
-              icon={<Heart size={18} />}
-              aria-label={`Add ${book.title} to wishlist`}
+              icon={
+                <Heart
+                  size={18}
+                  fill={isWishlisted ? "#c62123" : "none"}
+                  className={
+                    isWishlisted ? "text-[#c62123]" : "text-foreground"
+                  }
+                />
+              }
+              aria-label={
+                isWishlisted
+                  ? `Remove ${book.title} from wishlist`
+                  : `Add ${book.title} to wishlist`
+              }
+              onClick={() => toggleWishlist(book)}
               className="h-11 w-11 shrink-0 border border-border bg-white"
             />
           </div>
@@ -208,9 +226,7 @@ export default function BookDetailPage({
           )}
 
           <section className="mt-10">
-            <h2 className="text-xl font-semibold text-foreground">
-              Reviews
-            </h2>
+            <h2 className="text-xl font-semibold text-foreground">Reviews</h2>
             <div className="mt-3 flex flex-col gap-4">
               {MOCK_REVIEWS.map((review) => (
                 <ReviewItem key={review.name} {...review} />
@@ -219,18 +235,15 @@ export default function BookDetailPage({
           </section>
 
           {related.data && related.data.length > 0 && (
-        <div className="mt-12">
-          <BookCarouselSection
-            title="You might also like"
-            books={related.data.filter((b) => b.id !== book.id)}
-          />
+            <div className="mt-12">
+              <BookCarouselSection
+                title="You might also like"
+                books={related.data.filter((b) => b.id !== book.id)}
+              />
+            </div>
+          )}
         </div>
-      )}
-        </div>
-        
       </div>
-
-      
     </main>
   );
 }

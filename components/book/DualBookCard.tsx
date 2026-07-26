@@ -2,10 +2,40 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Heart } from "lucide-react";
+import { useWishlistStore } from "@/lib/store/useWishlistStore";
 import type { Book } from "@/lib/types";
 
 interface DualBookCardProps {
   books: [Book, Book];
+}
+
+function MiniWishlistButton({ book }: { book: Book }) {
+  const isWishlisted = useWishlistStore((state) => state.isWishlisted(book.id));
+  const toggle = useWishlistStore((state) => state.toggle);
+
+  return (
+    <button
+      type="button"
+      aria-label={
+        isWishlisted
+          ? `Remove ${book.title} from wishlist`
+          : `Add ${book.title} to wishlist`
+      }
+      onClick={(e) => {
+        e.preventDefault();
+        toggle(book);
+      }}
+      className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-[#f3f2ed] shadow-sm transition-transform hover:scale-110"
+    >
+      <Heart
+        size={13}
+        strokeWidth={1.5}
+        fill={isWishlisted ? "#c62123" : "none"}
+        className={isWishlisted ? "text-[#c62123]" : "text-[#303030]"}
+      />
+    </button>
+  );
 }
 
 export function DualBookCard({ books }: DualBookCardProps) {
@@ -32,6 +62,7 @@ export function DualBookCard({ books }: DualBookCardProps) {
                 {book.title}
               </div>
             )}
+            <MiniWishlistButton book={book} />
           </div>
         ))}
       </div>
