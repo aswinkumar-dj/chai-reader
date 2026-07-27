@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 export function Hero() {
   return (
     <section className="relative mb-20 mt-8">
-      <div className="relative flex w-full flex-col items-start justify-center gap-6 overflow-visible rounded-[12px] border border-[#e9e9e9] bg-white px-5 py-8 sm:px-8 sm:py-10 md:h-[237px] md:px-12 lg:pr-[380px]">
+      <div className="relative flex w-full flex-col items-start justify-center gap-6 overflow-visible rounded-[12px] border border-[#e9e9e9] bg-white px-4 py-8 sm:px-8 sm:py-10 md:h-[237px] md:px-12 lg:pr-[380px]">
         {/* Text content -- capped width so it never runs under the
             illustration on the right. lg:pr-[380px] on the parent card
             reserves space for the illustration at the same breakpoint
@@ -24,9 +24,8 @@ export function Hero() {
             <span className="font-semibold">Silent Pages</span>
           </h1>
 
-          <p className="mt-4 text-justify text-base leading-[1.6] text-[#404040] opacity-80">
-            A global publishing technology pavilion designed to run alongside
-            major international book fairs
+          <p className="mt-4 text-left text-base leading-[1.6] text-[#404040] opacity-80 sm:text-justify">
+            A global publishing technology pavilion designed to run alongside major international book fairs
           </p>
 
           <Link

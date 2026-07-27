@@ -31,13 +31,13 @@ export default function RootLayout({
               at this level scrolls -- only the designated scroll region
               inside (the main content column) will. Padding is tighter
               on mobile (16px) and widens to 28px from lg upward. */}
-          <div className="flex h-screen w-full gap-[28px] overflow-hidden px-[16px] py-6 lg:px-[28px]">
+          <div className="flex h-screen w-full gap-[28px] overflow-hidden pl-[6px] pr-[16px] py-6 lg:px-[28px]">
             {/* Sidebar: fixed height matching the viewport, scrolls
                 internally only if its own content overflows (e.g. more
                 nav items than fit) -- doesn't move when content scrolls.
                 The component itself handles desktop vs. mobile-drawer
                 rendering internally. */}
-            <div className="h-full shrink-0 overflow-y-auto hidden lg:block">
+            <div className="h-full shrink-0 overflow-y-auto lg:contents">
               <Sidebar />
             </div>
 
@@ -48,9 +48,7 @@ export default function RootLayout({
                 <Header />
               </div>
               <div className="content-scroll flex-1 overflow-y-auto">
-                <PageTransition>
-                  {children}
-                </PageTransition>
+                <PageTransition>{children}</PageTransition>
               </div>
             </div>
           </div>

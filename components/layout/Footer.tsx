@@ -10,7 +10,7 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="relative mt-16 overflow-hidden rounded-[12px] bg-[#f5f9ff] px-8 pb-0 pt-10 md:px-16">
-      <div className="relative z-10 flex flex-col gap-10 md:flex-row md:justify-between">
+      <div className="relative z-10 flex flex-col gap-10 lg:flex-row lg:justify-between">
         <div className="max-w-[535px]">
           <div className="flex items-center gap-2">
             <Image src="/logo.svg" alt="Chai Reader" width={140} height={28} />
@@ -23,7 +23,8 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:gap-16">
+        {/* 2 columns on tablet (more room per column), 3 only from lg up */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-3 lg:gap-16">
           {Object.entries(footerLinks).map(([heading, links]) => (
             <div key={heading}>
               <p className="font-semibold text-black">{heading}</p>
@@ -44,10 +45,13 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Decorative wave -- simple layered SVG rather than the exact
-          multi-path Figma export, approximated in the same blue tones */}
+      {/* Wave graphic -- negative margins pull it past the footer's own
+          padding so it reaches both edges of the rounded card, instead
+          of being constrained to the inner content width like the text
+          above it. overflow-hidden on the footer itself clips it back
+          to the card's rounded corners. */}
       <svg
-        className="relative z-0 mt-10 -mb-1 w-full"
+        className="relative z-0 mt-10 -mb-1 -mx-8 w-[calc(100%+4rem)] md:-mx-16 md:w-[calc(100%+8rem)]"
         viewBox="0 0 1366 120"
         preserveAspectRatio="none"
         aria-hidden="true"
