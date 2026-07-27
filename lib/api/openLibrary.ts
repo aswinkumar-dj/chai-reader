@@ -1,7 +1,7 @@
 // Low-level API client -- talks directly to Open Library, knows nothing
 // about our app's internal Book/Author types. Its only job is: build the
 // right URL, fetch it, return the raw JSON. All the "make this messy data
-// clean" logic lives in the repository layer, not here.
+// clean" logic lives in the repository layer.
 //since this is a open library - no keys, common for all - i directly used here for simplicity for this assesment evaluation.
 
 const BASE_URL = "https://openlibrary.org";

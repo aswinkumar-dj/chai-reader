@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 // Matches the Figma "filled button" component (#121212 bg, ~6px radius) --
-// this is the same button used for "Read & Chat", "Buy Now", "Explore More",
+// this is the same button used for "Read & Chat", "Explore More",
 // etc. across the whole design, not a card-specific style.
 export function Button({
   variant = "primary",

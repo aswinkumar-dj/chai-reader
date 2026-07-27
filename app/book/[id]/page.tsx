@@ -3,7 +3,7 @@
 import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useBook, useAuthor, useBooksBySubject } from "@/hooks/useBooks";
 import { useExpandableText } from "@/hooks/useExpandableText";
 import { IconButton } from "@/components/ui/IconButton";

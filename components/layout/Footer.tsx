@@ -4,7 +4,7 @@ import Link from "next/link";
 const footerLinks = {
   "Quick Links": ["About", "Contact", "Home", "FAQ", "Support / Help Center"],
   "For Partners": ["For Authors", "For Publishers", "Become a Partner"],
-  Legal: ["Terms & Conditions", "Privacy Policy", "Cookie Policy"],
+  "Legal": ["Terms & Conditions", "Privacy Policy", "Cookie Policy"],
 };
 
 export function Footer() {
@@ -17,9 +17,9 @@ export function Footer() {
           </div>
           <p className="mt-6 text-[15px] leading-relaxed text-[#686868]">
             Chai Reader is an AI-powered book commerce platform designed to
-            transform how people discover and experience books—through
-            reading, chatting with books, and more. It is owned and operated
-            by Ailaysa Technologies Pvt Ltd.
+            transform how people discover and experience books—through reading,
+            chatting with books, and more. It is owned and operated by Ailaysa
+            Technologies Pvt Ltd.
           </p>
         </div>
 

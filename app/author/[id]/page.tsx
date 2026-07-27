@@ -3,8 +3,7 @@
 import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-import { useAuthor, useBook, useBooksBySubject } from "@/hooks/useBooks";
+import { useAuthor, useBooksBySubject } from "@/hooks/useBooks";
 import { useExpandableText } from "@/hooks/useExpandableText";
 import { BookCarouselSection } from "@/components/book/BookCarouselSection";
 import { WideBookCard } from "@/components/book/WideBookCard";

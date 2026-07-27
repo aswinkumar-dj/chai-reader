@@ -52,6 +52,7 @@ export function Hero() {
             src="/hero-illustration.png"
             alt="Life of the Wild book illustration"
             fill
+            sizes="(max-width: 1023px) 0px, 465px"
             className="object-contain"
           />
         </div>

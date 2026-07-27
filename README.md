@@ -74,6 +74,7 @@ No data source was provided in the brief. These fill that gap:
 - Build a full cart/checkout flow if the product scope extends beyond wishlist.
 - A deeper accessibility pass — full keyboard navigation and screen reader testing.
 - Further image-loading tuning (blur placeholders, tighter responsive `sizes`).
+- This was completed in weekends. If i have more time, i could make even more responsive page.
 
 ## Responsive Design & Mobile Readiness
 

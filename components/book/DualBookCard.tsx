@@ -26,13 +26,13 @@ function MiniWishlistButton({ book }: { book: Book }) {
         e.preventDefault();
         toggle(book);
       }}
-      className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-[#f3f2ed] shadow-sm transition-transform hover:scale-110"
+      className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-md bg-[#f3f2ed] shadow-sm transition-transform hover:scale-110"
     >
       <Heart
         size={13}
         strokeWidth={1.5}
         fill={isWishlisted ? "#c62123" : "none"}
-        className={isWishlisted ? "text-[#c62123]" : "text-[#303030]"}
+        className={isWishlisted ? "text-[#c62123]" : "text-[#c62123]"}
       />
     </button>
   );

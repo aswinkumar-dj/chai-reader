@@ -29,7 +29,6 @@ export function AuthorAvatarCard({ id, name }: AuthorAvatarCardProps) {
           block hiding the image. */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/98 via-black/10 to-transparent" />
 
-      {/* Name overlaid at the bottom, in white */}
       <p className="absolute inset-x-0 bottom-0 truncate px-2 py-2.5 text-center text-sm font-medium text-white">
         {name}
       </p>
